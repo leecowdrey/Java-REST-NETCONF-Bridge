@@ -1,0 +1,23 @@
+{
+  "request": [
+    {
+      "host": "10.200.21.56",
+      "port": 22,
+      "username": "brocade",
+      "password": "br0cade",
+      "xml": "",
+      "datastore": "running",
+      "operation": "none",
+      "url": "",
+      "config": "/interfaces/dataplane",
+      "bypass": false,
+      "ssh": {
+        "privateKey": "",
+        "passphrase": "",
+        "debug": false,
+        "readTimeOut": 600,
+        "strictHosts": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+### Hello ###
+
+<hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+<capabilities>
+<capability>urn:ietf:params:netconf:base:1.0</capability>
+    <capability>urn:ietf:params:netconf:base:1.0</capability>
+</capabilities>
+</hello>
+]]>]]>
+
+### Set ###
+
+<rpc message-id="1" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+<edit-config>
+<target>
+<candidate/>
+</target>
+<config>
+<interfaces xmlns="urn:vyatta.com:mgmt:vyatta-interfaces:1">
+    <dataplane xmlns="urn:vyatta.com:mgmt:vyatta-interfaces-dataplane:1">
+      <tagnode>dp0p192p1</tagnode>
+      <description>Management Interface</description>
+    </dataplane>
+</interfaces>
+</config>
+</edit-config>
+</rpc>
+]]>]]>
+
+### Commit ###
+
+<rpc message-id="2" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+<commit>
+</commit>
+</rpc>
+]]>]]>
+
+
+### Get ###
+
+<?xml version="1.0"?>
+<nc:rpc message-id="3" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+   <nc:get>
+       <nc:filter type="subtree">
+<interfaces xmlns="urn:vyatta.com:mgmt:vyatta-interfaces:1">
+       <dataplane xmlns="urn:vyatta.com:mgmt:vyatta-interfaces-dataplane:1">
+       <tagnode>dp0p192p1</tagnode>
+       <description>
+       </description>
+        </dataplane>
+     	</interfaces>
+       </nc:filter>
+   </nc:get>
+</nc:rpc>
+]]>]]>
+
+### Delete ####
+
+<?xml version="1.0"?>
+<rpc message-id="4" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+<edit-config>
+<default-operation>none</default-operation>
+<target>
+<candidate/>
+</target>
+<nc:config xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+<interfaces xmlns="urn:vyatta.com:mgmt:vyatta-interfaces:1">
+     <dataplane xmlns="urn:vyatta.com:mgmt:vyatta-interfaces-dataplane:1">
+       <tagnode>dp0p192p1</tagnode>
+       <description nc:operation="delete">
+       <tagnode>Management Interface</tagnode>
+       </description>
+     </dataplane>
+   </interfaces>
+</nc:config>
+</edit-config>
+</rpc>
+]]>]]>
+
+
+#### Commit ####
+
+<rpc message-id="5" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+<commit>
+</commit>
+</rpc>
+]]>]]>
+
+### Save ###
+
+<rpc message-id="6" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+<copy-config>
+<target>
+<startup/>
+</target>
+<source>
+<running/>
+</source>
+</copy-config>
+</rpc>
+]]>]]>
